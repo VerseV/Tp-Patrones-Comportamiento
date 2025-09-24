@@ -1,4 +1,4 @@
-package Main.java.EntidadesBase;
+package Main.Java.EntidadesBase;
 
 import Main.java.Observer.Observer;
 
