@@ -1,6 +1,5 @@
 package Main.Java.EntidadesBase;
 
-import Main.java.Observer.Observer;
 
 public abstract class Usuario {
     public String nombre;
