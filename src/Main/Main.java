@@ -3,6 +3,7 @@ package Main;
 
 import Main.Java.EntidadesBase.Alumno;
 import Main.Java.EntidadesBase.Curso;
+import Main.Java.TemplateMethod.ReporteAcademico;
 import Main.Java.TemplateMethod.ReporteAlumno;
 import Main.Java.TemplateMethod.ReporteCurso;
 
@@ -12,7 +13,6 @@ public class Main {
 
 
         //CREACIÓN DE ENTIDADES BASE
-
 
         Long id = 0L; //para asignar e incrementar
 
@@ -25,6 +25,8 @@ public class Main {
         a1.setApellido("Bomprezzi");
         a1.setEdad(22);
         a1.setId(id);
+        a1.agregarNota(8);
+        a1.agregarNota(9);
         id++;
 
 
@@ -34,6 +36,8 @@ public class Main {
         a2.setApellido("Fernández");
         a2.setEdad(24);
         a2.setId(id);
+        a2.agregarNota(6);
+        a2.agregarNota(7);
         id++;
 
         Alumno a3 = new Alumno();
@@ -42,27 +46,44 @@ public class Main {
         a3.setApellido("Gómez");
         a3.setEdad(21);
         a3.setId(id);
+        a3.agregarNota(10);
+        a3.agregarNota(9);
         id++;
 
 
 
 
-        //PATRÓN OBSERVER
+        // ============================================================
+        // PATRÓN OBSERVER
+        // ============================================================
+        System.out.println("\n---  OBSERVER ---");
         curso3k9.addObserver(a1);
         curso3k9.addObserver(a2);
         curso3k9.addObserver(a3);
 
         curso3k9.cambiarHorario("12:30");
 
-        //PATRON TEMPLATE METHOD
+        // ============================================================
+        // PATRÓN TEMPLATE METHOD
+        // ============================================================
         System.out.println("\n--- TEMPLATE METHOD ---");
-        ReporteCurso rc = new ReporteCurso(curso3k9);
-        rc.generarReporte();
+        // Relacionar alumnos con el curso
+        curso3k9.agregarAlumno(a1);
+        curso3k9.agregarAlumno(a2);
+        curso3k9.agregarAlumno(a3);
 
-        ReporteAlumno ra = new ReporteAlumno(a1);
-        ra.generarReporte();
+        // Reporte por curso
+        ReporteAcademico reporteCurso = new ReporteCurso(curso3k9);
+        reporteCurso.generarReporte();
 
+        // Reportes individuales por alumno
+        ReporteAcademico reporteAlumno1 = new ReporteAlumno(a1);
+        reporteAlumno1.generarReporte();
 
+        ReporteAcademico reporteAlumno2 = new ReporteAlumno(a2);
+        reporteAlumno2.generarReporte();
 
+        ReporteAcademico reporteAlumno3 = new ReporteAlumno(a3);
+        reporteAlumno3.generarReporte();
     }
 }

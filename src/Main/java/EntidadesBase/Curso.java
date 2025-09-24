@@ -1,7 +1,7 @@
 package Main.Java.EntidadesBase;
 
-import Main.java.Observer.Observer;
-import Main.java.Observer.Subject;
+import Main.Java.Observer.Observer;
+import Main.Java.Observer.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,7 @@ public class Curso implements Subject {
     public String titulo;
     private List<Observer> observadores = new ArrayList<>(); //Para el patrón observer
 
-
-
-//GETTERS Y SETTERS
+    //GETTERS Y SETTERS
     public Long getId() {
         return id;
     }
@@ -38,6 +36,23 @@ public class Curso implements Subject {
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 '}';
+    }
+
+    // TEMPLATE METHOD
+    private List<Alumno> alumnos = new ArrayList<>();
+
+    // MÉTODOS PARA MANEJAR ALUMNOS
+    public void agregarAlumno(Alumno a) {
+        alumnos.add(a);
+    }
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public double getPromedioCurso() {
+        if (alumnos.isEmpty()) return 0.0;
+        return alumnos.stream().mapToDouble(Alumno::getPromedio).average().orElse(0.0);
     }
 
 

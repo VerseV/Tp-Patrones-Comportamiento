@@ -1,12 +1,29 @@
 package Main.Java.EntidadesBase;
 
-import Main.java.Observer.Observer;
+import Main.Java.Observer.Observer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Alumno extends Usuario implements Observer {
 
     public int Legajo;
 
+    // Template Method para el manejo de notas
+    private List<Integer> notas = new ArrayList<>();
 
+    public void agregarNota(int nota) {
+        notas.add(nota);
+    }
+
+    public List<Integer> getNotas() {
+        return notas;
+    }
+
+    public double getPromedio() {
+        if (notas.isEmpty()) return 0.0;
+        return notas.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+    }
 
     //GETTERS Y SETTERS
     public int getLegajo() {
