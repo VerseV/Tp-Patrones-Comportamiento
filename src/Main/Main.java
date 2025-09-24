@@ -1,8 +1,11 @@
 package Main;
 
 
-import Main.java.EntidadesBase.Alumno;
-import Main.java.EntidadesBase.Curso;
+import Main.Java.EntidadesBase.Alumno;
+import Main.Java.EntidadesBase.Curso;
+import Main.Java.TemplateMethod.ReporteAlumno;
+import Main.Java.TemplateMethod.ReporteCurso;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -51,6 +54,13 @@ public class Main {
 
         curso3k9.cambiarHorario("12:30");
 
+        //PATRON TEMPLATE METHOD
+        System.out.println("\n--- TEMPLATE METHOD ---");
+        ReporteCurso rc = new ReporteCurso(curso3k9);
+        rc.generarReporte();
+
+        ReporteAlumno ra = new ReporteAlumno(a1);
+        ra.generarReporte();
 
 
 

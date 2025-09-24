@@ -1,4 +1,4 @@
-package Main.java.Observer;
+package Main.Java.Observer;
 
 public interface Subject {
 
