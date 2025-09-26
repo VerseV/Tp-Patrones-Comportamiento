@@ -1,6 +1,7 @@
 package Main.java.State;
 
 public interface EstadoInscripcion {
-    void cambiarEstado(); //Tenemos una inscripción que puede estar en Inscripto, EnEspera o Cancelado
-
+    void cambiarEstado(Inscripcion inscripcion); //Tenemos una inscripción que puede estar en Inscripto, EnEspera o Cancelado
+    //Cuando se llame a cambiarEstado, el metodo recibe la inscripción para cambiar su atributo estado
+    String getNombre();
 }
