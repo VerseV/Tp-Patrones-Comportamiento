@@ -1,4 +1,4 @@
 package Main.java.State;
 
-public class EnEspera {
+public class EnEspera implements EstadoInscripcion{
 }
