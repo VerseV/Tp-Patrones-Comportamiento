@@ -19,10 +19,14 @@ public class Main {
 
         Curso curso3k9 = new Curso();
         curso3k9.setTitulo("Curso 3k9");
-        curso3k9.setCupoMaximo(2);
+        curso3k9.setCupoMaximo(4);
+        //Otro curso para State
+        Curso curso3k10 = new Curso();
+        curso3k10.setTitulo("Curso 3k10");
+        curso3k10.setCupoMaximo(0);
 
         Alumno a1 = new Alumno();
-        a1.setLegajo(123456);
+        a1.setLegajo(12345);
         a1.setNombre("Paula");
         a1.setApellido("Bomprezzi");
         a1.setEdad(22);
@@ -33,7 +37,7 @@ public class Main {
 
 
         Alumno a2 = new Alumno();
-        a2.setLegajo(789012);
+        a2.setLegajo(78901);
         a2.setNombre("Lucas");
         a2.setApellido("Fernández");
         a2.setEdad(24);
@@ -43,7 +47,7 @@ public class Main {
         id++;
 
         Alumno a3 = new Alumno();
-        a3.setLegajo(345678);
+        a3.setLegajo(34567);
         a3.setNombre("Martina");
         a3.setApellido("Gómez");
         a3.setEdad(21);
@@ -52,6 +56,13 @@ public class Main {
         a3.agregarNota(9);
         id++;
 
+        //Agrego alumno para State
+        Alumno a4 = new Alumno();
+        a4.setLegajo(69567);
+        a4.setNombre("Tomas");
+        a4.setApellido("Vicente");
+        a4.setEdad(21);
+        a4.setId(id);
 
 
 
@@ -62,8 +73,10 @@ public class Main {
         curso3k9.addObserver(a1);
         curso3k9.addObserver(a2);
         curso3k9.addObserver(a3);
+        curso3k10.addObserver(a4);
 
         curso3k9.cambiarHorario("12:30");
+        curso3k10.cambiarHorario("17:45");
 
         // ============================================================
         // PATRÓN TEMPLATE METHOD
@@ -73,6 +86,8 @@ public class Main {
         curso3k9.agregarAlumno(a1);
         curso3k9.agregarAlumno(a2);
         curso3k9.agregarAlumno(a3);
+        //Agrego para State
+        curso3k10.agregarAlumno(a4);
 
         // Reporte por curso
         ReporteAcademico reporteCurso = new ReporteCurso(curso3k9);
@@ -96,20 +111,25 @@ public class Main {
     Inscripcion ins1 = new Inscripcion(a1, curso3k9);
     Inscripcion ins2 = new Inscripcion(a2, curso3k9);
     Inscripcion ins3 = new Inscripcion(a3, curso3k9);
+    Inscripcion ins4 = new Inscripcion(a4, curso3k10);
 
         System.out.println("\n--- ESTADOS INICIALES ---");
         ins1.mostrarEstado();
         ins2.mostrarEstado();
         ins3.mostrarEstado();
+        ins4.mostrarEstado();
 
         System.out.println("\n--- CAMBIO DE ESTADOS ---");
         ins1.cambiarEstado();
         ins2.cambiarEstado();
         ins3.cambiarEstado();
+        ins4.cambiarEstado();
 
+        System.out.println("\n--- ESTADOS ACTUALES ---");
         ins1.mostrarEstado();
         ins2.mostrarEstado();
         ins3.mostrarEstado();
+        ins4.mostrarEstado();
 }
 
 }
