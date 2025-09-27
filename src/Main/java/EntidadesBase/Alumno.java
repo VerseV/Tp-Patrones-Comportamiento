@@ -49,6 +49,11 @@ public class Alumno extends Usuario implements Observer {
 
     //DELEGO EL CALCULO A LA ESTRATEGIA
 
+    public double calcularNotaFinal(){
+        if (estrategia == null) return getPromedio();
+        return estrategia.calcular(notas);
+    }
+
     @Override
     public String toString() {
         return "Alumno{" +

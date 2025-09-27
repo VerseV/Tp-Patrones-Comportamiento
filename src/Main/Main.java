@@ -7,6 +7,9 @@ import Main.Java.TemplateMethod.ReporteAcademico;
 import Main.Java.TemplateMethod.ReporteAlumno;
 import Main.Java.TemplateMethod.ReporteCurso;
 import Main.java.State.Inscripcion;
+import Main.java.Strategy.ExamenExtra;
+import Main.java.Strategy.PromedioPonderado;
+import Main.java.Strategy.PromedioSimple;
 
 
 public class Main {
@@ -130,6 +133,26 @@ public class Main {
         ins2.mostrarEstado();
         ins3.mostrarEstado();
         ins4.mostrarEstado();
+
+        // ============================================================
+        // PATRÓN STRATEGY - CALCULAR NOTA
+        // ========================================================
+
+        System.out.println("\n--- STRATEGY ---");
+
+        a1.setNombre("Paula");
+        a1.agregarNota(8);
+        a1.agregarNota(9);
+        a1.agregarNota(7);
+
+        a1.setEstrategia(new PromedioSimple());
+        System.out.println("Promedio simple: " + a1.calcularNotaFinal());
+
+        a1.setEstrategia(new PromedioPonderado());
+        System.out.println("Promedio ponderado: " + a1.calcularNotaFinal());
+
+        a1.setEstrategia(new ExamenExtra());
+        System.out.println("Con examen extra: " + a1.calcularNotaFinal());
 }
 
 }
