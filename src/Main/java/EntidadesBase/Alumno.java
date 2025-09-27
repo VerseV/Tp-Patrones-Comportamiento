@@ -8,6 +8,7 @@ import java.util.List;
 public class Alumno extends Usuario implements Observer {
 
     public int Legajo;
+    public String nombre;
 
     // Template Method para el manejo de notas
     private List<Integer> notas = new ArrayList<>();

@@ -13,6 +13,7 @@ public class Curso implements Subject {
     public Long id;
     public String titulo;
     private List<Observer> observadores = new ArrayList<>(); //Para el patrón observer
+    private int cupoMaximo; // para evaluar si se Inscribe o se Cancela
 
     //GETTERS Y SETTERS
     public Long getId() {
@@ -30,11 +31,19 @@ public class Curso implements Subject {
         this.titulo = titulo;
     }
 
+    public int getCupoMaximo() {
+        return cupoMaximo;
+    }
+
+    public void setCupoMaximo(int cupoMaximo) {
+        this.cupoMaximo = cupoMaximo;
+    }
+
     @Override
     public String toString() {
         return "Curso{" +
                 "id=" + id +
-                ", titulo='" + titulo + '\'' +
+                ", titulo='" + titulo + '\'' + ", Cupo Maximo= " + cupoMaximo + ", inscriptos= " + alumnos.size() +
                 '}';
     }
 
@@ -76,5 +85,10 @@ public class Curso implements Subject {
 
     public void cambiarHorario(String nuevoHorario) {
         notifyObservers(" Nuevo horario: " + nuevoHorario);
+    }
+
+    //Evaluamos cupo del Curso
+    public boolean tieneCupo() {
+        return alumnos.size() < cupoMaximo;
     }
 }

@@ -30,7 +30,12 @@ public class Inscripcion {
     public void cambiarEstado(){
         estado.cambiarEstado(this);
     }
-//Para ver el alumno, con su curso y estado hay que imprimir
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    //Para ver el alumno, con su curso y estado hay que imprimir
     public void mostrarEstado(){
         System.out.println("Alumno: " + alumno.getLegajo() + " - Curso: " + curso.getTitulo() + " - Estado: " + estado.getNombre());
     }

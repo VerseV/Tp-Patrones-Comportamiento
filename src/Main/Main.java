@@ -6,6 +6,7 @@ import Main.Java.EntidadesBase.Curso;
 import Main.Java.TemplateMethod.ReporteAcademico;
 import Main.Java.TemplateMethod.ReporteAlumno;
 import Main.Java.TemplateMethod.ReporteCurso;
+import Main.java.State.Inscripcion;
 
 
 public class Main {
@@ -18,6 +19,7 @@ public class Main {
 
         Curso curso3k9 = new Curso();
         curso3k9.setTitulo("Curso 3k9");
+        curso3k9.setCupoMaximo(2);
 
         Alumno a1 = new Alumno();
         a1.setLegajo(123456);
@@ -85,5 +87,29 @@ public class Main {
 
         ReporteAcademico reporteAlumno3 = new ReporteAlumno(a3);
         reporteAlumno3.generarReporte();
-    }
+
+    // ============================================================
+    // PATRÓN STATE - INSCRIPCIONES
+    // ============================================================
+        System.out.println("\n--- STATE (INSCRIPCIONES) ---");
+
+    Inscripcion ins1 = new Inscripcion(a1, curso3k9);
+    Inscripcion ins2 = new Inscripcion(a2, curso3k9);
+    Inscripcion ins3 = new Inscripcion(a3, curso3k9);
+
+        System.out.println("\n--- ESTADOS INICIALES ---");
+        ins1.mostrarEstado();
+        ins2.mostrarEstado();
+        ins3.mostrarEstado();
+
+        System.out.println("\n--- CAMBIO DE ESTADOS ---");
+        ins1.cambiarEstado();
+        ins2.cambiarEstado();
+        ins3.cambiarEstado();
+
+        ins1.mostrarEstado();
+        ins2.mostrarEstado();
+        ins3.mostrarEstado();
+}
+
 }
