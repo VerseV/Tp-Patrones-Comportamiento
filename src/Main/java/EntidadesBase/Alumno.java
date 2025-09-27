@@ -1,6 +1,8 @@
 package Main.Java.EntidadesBase;
 
 import Main.Java.Observer.Observer;
+import Main.java.Strategy.CalculoNota;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,16 +10,20 @@ import java.util.List;
 public class Alumno extends Usuario implements Observer {
 
     public int Legajo;
-    public String nombre;
+
+    private CalculoNota estrategia; //Atributo para el patron Strategy
+
 
     // Template Method para el manejo de notas
-    private List<Integer> notas = new ArrayList<>();
+    private List<Integer> notas = new ArrayList<>(); //Lo utiliza Strategy tambien
 
     public void agregarNota(int nota) {
+
         notas.add(nota);
     }
 
     public List<Integer> getNotas() {
+
         return notas;
     }
 
@@ -35,7 +41,13 @@ public class Alumno extends Usuario implements Observer {
         this.Legajo = Legajo;
     }
 
+    //Strategy para cambiar de tipo de calculo en ejecución
 
+    public void setEstrategia(CalculoNota estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    //DELEGO EL CALCULO A LA ESTRATEGIA
 
     @Override
     public String toString() {
