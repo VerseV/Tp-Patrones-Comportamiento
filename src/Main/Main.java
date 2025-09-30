@@ -11,6 +11,17 @@ import Main.java.Strategy.ExamenExtra;
 import Main.java.Strategy.PromedioPonderado;
 import Main.java.Strategy.PromedioSimple;
 import Main.Java.Iterator.CursoIterator;
+import Main.Java.Mediator.ChatRoom;
+import Main.Java.EntidadesBase.Profesor;
+import Main.Java.Memento.Examen;
+import Main.Java.Memento.Memento;
+import Main.Java.Visitor.AplicarBeca;
+import Main.Java.Visitor.Visitor;
+import Main.Java.EntidadesBase.AlumnoRegular;
+import Main.Java.EntidadesBase.AlumnoBecado;
+
+
+
 
 
 public class Main {
@@ -169,6 +180,80 @@ public class Main {
         while (it.hasNext()) {
             System.out.println(" - " + it.next().getTitulo());
         }
-}
+        // ============================================================
+        // PATRÓN MEDIATOR - CHAT
+        // ============================================================
+        System.out.println("\n--- MEDIATOR (CHAT) ---");
+
+        ChatRoom chat = new ChatRoom();
+
+        // Registramos participantes en la sala
+        chat.registrarUsuario(a1);
+        chat.registrarUsuario(a2);
+        chat.registrarUsuario(a3);
+
+        // Creamos y registramos un profesor
+        Profesor prof = new Profesor();
+        prof.setNombre("Diego");
+        prof.setApellido("Ramos");
+        prof.setEdad(40);
+        prof.setId(id++);
+        chat.registrarUsuario(prof);
+
+        // Asignamos el mediador a cada usuario
+        a1.setChatMediator(chat);
+        a2.setChatMediator(chat);
+        a3.setChatMediator(chat);
+        prof.setChatMediator(chat);
+
+        // Enviamos mensajes
+        a1.enviarMensaje("Hola a todos!");
+        prof.enviarMensaje("Buen día, bienvenidos al curso.");
+        a2.enviarMensaje("Gracias profe!");
+        // ============================================================
+        // PATRÓN MEMENTO - EXAMEN
+        // ============================================================
+        System.out.println("\n--- MEMENTO ---");
+
+        Examen examen = new Examen();
+
+        // El alumno responde algunas preguntas
+        examen.responder("Respuesta 1: A");
+        examen.responder("Respuesta 2: C");
+        examen.mostrarRespuestas();
+
+        // Guardamos el estado en un memento
+        Memento checkpoint = examen.save();
+
+        // El alumno sigue respondiendo
+        examen.responder("Respuesta 3: B");
+        examen.mostrarRespuestas();
+
+        // Restauramos al estado guardado
+        examen.restore(checkpoint);
+        System.out.println("Después de restaurar:");
+        examen.mostrarRespuestas();
+        // ============================================================
+        // PATRÓN VISITOR - APLICAR BECAS
+        // ============================================================
+        System.out.println("\n--- VISITOR ---");
+
+        AlumnoRegular ar = new AlumnoRegular();
+        ar.setNombre("Sofia");
+        ar.setApellido("Martinez");
+        ar.setEdad(22);
+
+        AlumnoBecado ab = new AlumnoBecado();
+        ab.setNombre("Pedro");
+        ab.setApellido("Lopez");
+        ab.setEdad(21);
+        ab.setPorcentajeBeca(75.0);
+
+        Visitor aplicarBeca = new AplicarBeca();
+
+        ar.aceptar(aplicarBeca);
+        ab.aceptar(aplicarBeca);
+
+    }
 
 }
