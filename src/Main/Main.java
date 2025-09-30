@@ -10,6 +10,7 @@ import Main.java.State.Inscripcion;
 import Main.java.Strategy.ExamenExtra;
 import Main.java.Strategy.PromedioPonderado;
 import Main.java.Strategy.PromedioSimple;
+import Main.Java.Iterator.CursoIterator;
 
 
 public class Main {
@@ -153,6 +154,21 @@ public class Main {
 
         a1.setEstrategia(new ExamenExtra());
         System.out.println("Con examen extra: " + a1.calcularNotaFinal());
+        // ============================================================
+        // PATRÓN ITERATOR
+        // ============================================================
+        System.out.println("\n--- ITERATOR ---");
+
+        a1.inscribirCurso(curso3k9);
+        a1.inscribirCurso(curso3k10);
+        a2.inscribirCurso(curso3k9);
+        a3.inscribirCurso(curso3k9);
+
+        CursoIterator it = a1.iterator();
+        System.out.println("Cursos de " + a1.getNombre() + ":");
+        while (it.hasNext()) {
+            System.out.println(" - " + it.next().getTitulo());
+        }
 }
 
 }
