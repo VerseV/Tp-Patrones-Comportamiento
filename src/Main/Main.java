@@ -19,11 +19,11 @@ import Main.Java.Visitor.AplicarBeca;
 import Main.Java.Visitor.Visitor;
 import Main.Java.EntidadesBase.AlumnoRegular;
 import Main.Java.EntidadesBase.AlumnoBecado;
-import Main.Java.ChainOfResponsibility.Solicitud;
-import Main.Java.ChainOfResponsibility.Handler;
-import Main.Java.ChainOfResponsibility.AsistenteHandler;
-import Main.Java.ChainOfResponsibility.ProfesorHandler;
-import Main.Java.ChainOfResponsibility.CoordinadorHandler;
+import Main.Java.ChainOfResponsability.Solicitud;
+import Main.Java.ChainOfResponsability.Handler;
+import Main.Java.ChainOfResponsability.AsistenteHandler;
+//import Main.Java.ChainOfResponsability.ProfesorHandler;
+import Main.Java.ChainOfResponsability.CoordinadorHandler;
 import Main.Java.Command.AlumnoReceiver;
 import Main.Java.Command.Command;
 import Main.Java.Command.Invoker;
@@ -98,7 +98,7 @@ public class Main {
         System.out.println("\n--- CHAIN OF RESPONSIBILITY ---");
 
         Handler asistente = new AsistenteHandler();
-        Handler profesor = new ProfesorHandler();
+        Handler profesor = new Profesor();
         Handler coordinador = new CoordinadorHandler();
 
         // Armamos la cadena: Asistente -> Profesor -> Coordinador
