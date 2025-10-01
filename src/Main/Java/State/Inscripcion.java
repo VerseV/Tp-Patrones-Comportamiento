@@ -1,8 +1,7 @@
-package Main.java.State;
+package Main.Java.State;
 
 import Main.Java.EntidadesBase.Alumno;
 import Main.Java.EntidadesBase.Curso;
-import Main.java.State.EstadoInscripcion;
 
 public class Inscripcion {
     //Cada inscripción tiene un alumno y un curso!

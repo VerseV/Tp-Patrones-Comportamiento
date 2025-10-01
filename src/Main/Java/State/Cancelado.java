@@ -1,4 +1,4 @@
-package Main.java.State;
+package Main.Java.State;
 
 public class Cancelado implements EstadoInscripcion{
     @Override

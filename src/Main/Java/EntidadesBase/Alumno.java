@@ -1,7 +1,7 @@
 package Main.Java.EntidadesBase;
 
 import Main.Java.Observer.Observer;
-import Main.java.Strategy.CalculoNota;
+import Main.Java.Strategy.CalculoNota;
 import Main.Java.Iterator.CursoIterator;
 import Main.Java.Iterator.AlumnoCursoIterator;
 import Main.Java.Mediator.ChatMediator;

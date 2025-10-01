@@ -1,4 +1,4 @@
-package Main.java.State;
+package Main.Java.State;
 
 public class Inscripto implements EstadoInscripcion{
 

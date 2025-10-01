@@ -1,4 +1,4 @@
-package Main.java.State;
+package Main.Java.State;
 
 public interface EstadoInscripcion {
     void cambiarEstado(Inscripcion inscripcion); //Tenemos una inscripción que puede estar en Inscripto, EnEspera o Cancelado

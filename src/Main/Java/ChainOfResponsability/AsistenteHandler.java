@@ -1,4 +1,4 @@
-package Main.java.ChainOfResponsability;
+package Main.Java.ChainOfResponsability;
 
 public class AsistenteHandler implements Handler {
     private Handler next;
