@@ -19,6 +19,19 @@ import Main.Java.Visitor.AplicarBeca;
 import Main.Java.Visitor.Visitor;
 import Main.Java.EntidadesBase.AlumnoRegular;
 import Main.Java.EntidadesBase.AlumnoBecado;
+import Main.Java.ChainOfResponsibility.Solicitud;
+import Main.Java.ChainOfResponsibility.Handler;
+import Main.Java.ChainOfResponsibility.AsistenteHandler;
+import Main.Java.ChainOfResponsibility.ProfesorHandler;
+import Main.Java.ChainOfResponsibility.CoordinadorHandler;
+import Main.Java.Command.AlumnoReceiver;
+import Main.Java.Command.Command;
+import Main.Java.Command.Invoker;
+import Main.Java.Command.InscribirseCursoCommand;
+import Main.Java.Command.AbandonarCursoCommand;
+import Main.Java.Command.SolicitarCertificadoCommand;
+
+
 
 
 
@@ -78,6 +91,53 @@ public class Main {
         a4.setApellido("Vicente");
         a4.setEdad(21);
         a4.setId(id);
+
+         // ============================================================
+        // PATRÓN CHAIN OF RESPONSIBILITY - SOLICITUDES DE TUTORÍAS
+        // ============================================================
+        System.out.println("\n--- CHAIN OF RESPONSIBILITY ---");
+
+        Handler asistente = new AsistenteHandler();
+        Handler profesor = new ProfesorHandler();
+        Handler coordinador = new CoordinadorHandler();
+
+        // Armamos la cadena: Asistente -> Profesor -> Coordinador
+        asistente.setNext(profesor);
+        profesor.setNext(coordinador);
+
+        // Creamos solicitudes con distintos niveles
+        Solicitud s1 = new Solicitud("Consulta sobre inscripción", 1);
+        Solicitud s2 = new Solicitud("Duda técnica de programación", 2);
+        Solicitud s3 = new Solicitud("Problema grave con el curso", 3);
+
+        // Procesamos solicitudes
+        asistente.handle(s1);
+        asistente.handle(s2);
+         asistente.handle(s3);
+
+        // ============================================================
+       // PATRÓN COMMAND - ACCIONES DE ALUMNO
+      // ============================================================
+      System.out.println("\n--- COMMAND ---");
+
+      AlumnoReceiver alumnoCmd = new AlumnoReceiver("Juan Pérez");
+      Invoker invoker = new Invoker();
+
+      // Creamos los comandos
+      Command inscribirse = new InscribirseCursoCommand(alumnoCmd, "Patrones de Diseño");
+      Command abandonar = new AbandonarCursoCommand(alumnoCmd, "Base de Datos");
+      Command solicitarCert = new SolicitarCertificadoCommand(alumnoCmd, "Matemática");
+
+      // Ejecutamos comandos a través del invoker
+      invoker.executeCommand(inscribirse);
+      invoker.executeCommand(abandonar);
+      invoker.executeCommand(solicitarCert);
+
+      // Mostrar historial
+      invoker.showHistory();
+
+
+
 
 
 
