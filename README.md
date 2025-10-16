@@ -1,4 +1,4 @@
-# TP1 - Patrones Comportamiento en Java #
+# TP3 - Patrones Comportamiento en Java #
 ## Grupo N°7 ##
 - Victoria Acosta
 - Adriel Espejo
